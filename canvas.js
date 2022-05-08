@@ -2,10 +2,61 @@ var canvas = document.querySelector('canvas');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 var c = canvas.getContext('2d');
-var x = 50;
+var x = 1;
 var y = 100;
-var auxX = 0;
-var auxY = 0;
+var auxX = 5;
+var auxY = 5;
+
+
+function animatex() {
+
+    requestAnimationFrame(animatex);
+    c.clearRect(0, 0, innerWidth, innerHeight)
+
+    c.fillStyle = 'rgba(255,0,0,1)'; //Escolhe a cor
+    c.fillRect(x, 200, 200, 200); //Posiciona em X, Y e depois o tamanho
+
+    if ((x + 200) > innerWidth) {
+        auxX = -auxX;
+    }
+    else if (x < 0) {
+        auxX = -auxX
+    }
+    x = x + auxX;
+
+
+}
+animatex();
+
+
+
+function animatey() {
+
+    requestAnimationFrame(animatey);
+    c.clearRect(0, 0, innerWidth, innerHeight)
+
+    c.fillStyle = 'rgba(255,0,0,1)'; //Escolhe a cor
+    c.fillRect(200, y, 200, 200); //Posiciona em X, Y e depois o tamanho
+
+    if ((y + 200) > innerHeight) {
+        auxY = -auxY;
+    }
+    else if (y < 0) {
+        auxY = -auxY
+    }
+    y = y + auxY
+}
+animatey();
+
+
+function Pare() {
+    requestAnimationFrame(Pare)
+    c.clearRect(0, 0, innerWidth, innerHeight)
+    c.fillStyle = "rgba(255,0,0,1)"
+    c.fillRect(200, 200, 200, 200)
+}
+Pare();
+
 
 function gerar_cor_hexadecimal() {
     return '#' + parseInt((Math.random() * 0xFFF))
@@ -98,7 +149,6 @@ for (var i = 0; i < 10; i++) {
 */
 
 
-
 /*
 //Desafio 4
 //CÃ­rculo
@@ -109,6 +159,24 @@ c.stroke();
 */
 
 
+/*
+//Estrela
+c.fillStyle = gerar_cor_hexadecimal();
+c.beginPath();
+c.moveTo(108, 0.0);
+c.lineTo(141, 70);
+c.lineTo(218, 78.3);
+c.lineTo(162, 131);
+c.lineTo(175, 205);
+c.lineTo(108, 170);
+c.lineTo(41.2, 205);
+c.lineTo(55, 131);
+c.lineTo(1, 78);
+c.lineTo(75, 68);
+c.lineTo(108, 0);
+c.closePath();
+c.fill();
+*/
 
 /*
 //Coração
@@ -123,7 +191,6 @@ c.bezierCurveTo(130, 62.5, 130, 25, 100, 25);
 c.bezierCurveTo(85, 25, 75, 37, 75, 40);
 c.fill();
 */
-
 
 
 /*
@@ -149,26 +216,5 @@ c.quadraticCurveTo(400, 290, 390, 450);
 c.quadraticCurveTo(800, 260, 800, 600);
 c.lineWidth = 2;
 c.fillStyle = gerar_cor_hexadecimal();
-c.fill();
-*/
-
-
-
-/*
-//Estrela
-c.fillStyle = gerar_cor_hexadecimal();
-c.beginPath();
-c.moveTo(108, 0.0);
-c.lineTo(141, 70);
-c.lineTo(218, 78.3);
-c.lineTo(162, 131);
-c.lineTo(175, 205);
-c.lineTo(108, 170);
-c.lineTo(41.2, 205);
-c.lineTo(55, 131);
-c.lineTo(1, 78);
-c.lineTo(75, 68);
-c.lineTo(108, 0);
-c.closePath();
 c.fill();
 */
